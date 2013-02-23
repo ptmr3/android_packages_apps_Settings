@@ -1,10 +1,6 @@
 /*
-<<<<<<< HEAD
  * Copyright (C) 2010 Daniel Nilsson
  * Copyright (C) 2013 The CyanogenMod Project
-=======
- * Copyright (C) 2011 Sergey Margaritov
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,10 +33,6 @@ import com.android.settings.R;
 
 /**
  * A preference type that allows a user to choose a time
-<<<<<<< HEAD
-=======
- * 
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
  * @author Sergey Margaritov
  */
 public class ColorPickerPreference extends Preference implements
@@ -112,26 +104,16 @@ public class ColorPickerPreference extends Preference implements
     }
 
     private void setPreviewColor() {
-<<<<<<< HEAD
         if (mView == null) {
             return;
         }
-=======
-        if (mView == null)
-            return;
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
 
         ImageView iView = new ImageView(getContext());
         LinearLayout widgetFrameView = ((LinearLayout) mView
                 .findViewById(android.R.id.widget_frame));
-<<<<<<< HEAD
         if (widgetFrameView == null) {
             return;
         }
-=======
-        if (widgetFrameView == null)
-            return;
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
 
         widgetFrameView.setVisibility(View.VISIBLE);
         widgetFrameView.setPadding(
@@ -140,11 +122,7 @@ public class ColorPickerPreference extends Preference implements
                 (int) (mDensity * 8),
                 widgetFrameView.getPaddingBottom()
                 );
-<<<<<<< HEAD
         // Remove already create preview image
-=======
-        // remove already create preview image
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         int count = widgetFrameView.getChildCount();
         if (count > 0) {
             widgetFrameView.removeViews(0, count);
@@ -171,10 +149,6 @@ public class ColorPickerPreference extends Preference implements
                 }
             }
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         return bm;
     }
 
@@ -186,10 +160,6 @@ public class ColorPickerPreference extends Preference implements
         } catch (ClassCastException e) {
             mValue = mDefaultValue;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         return mValue;
     }
 
@@ -203,18 +173,12 @@ public class ColorPickerPreference extends Preference implements
         try {
             getOnPreferenceChangeListener().onPreferenceChange(this, color);
         } catch (NullPointerException e) {
-<<<<<<< HEAD
             // Do nothing here
-=======
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         }
         try {
             mEditText.setText(Integer.toString(color, 16));
         } catch (NullPointerException e) {
-<<<<<<< HEAD
             // Do nothing here
-=======
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         }
     }
 
@@ -225,19 +189,11 @@ public class ColorPickerPreference extends Preference implements
             picker.setAlphaSliderVisible(true);
         }
         picker.show();
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         return false;
     }
 
     /**
      * Toggle Alpha Slider visibility (by default it's disabled)
-<<<<<<< HEAD
-=======
-     * 
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
      * @param enable
      */
     public void setAlphaSliderEnabled(boolean enable) {
@@ -246,10 +202,6 @@ public class ColorPickerPreference extends Preference implements
 
     /**
      * For custom purposes. Not used by ColorPickerPreferrence
-<<<<<<< HEAD
-=======
-     * 
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
      * @param color
      * @author Unknown
      */
@@ -274,28 +226,16 @@ public class ColorPickerPreference extends Preference implements
         if (blue.length() == 1) {
             blue = "0" + blue;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         return "#" + alpha + red + green + blue;
     }
 
     /**
      * For custom purposes. Not used by ColorPickerPreferrence
-<<<<<<< HEAD
-=======
-     * 
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
      * @param argb
      * @throws NumberFormatException
      * @author Unknown
      */
     public static int convertToColorInt(String argb) throws NumberFormatException {
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         if (argb.startsWith("#")) {
             argb = argb.replace("#", "");
         }
@@ -307,24 +247,12 @@ public class ColorPickerPreference extends Preference implements
             red = Integer.parseInt(argb.substring(2, 4), 16);
             green = Integer.parseInt(argb.substring(4, 6), 16);
             blue = Integer.parseInt(argb.substring(6, 8), 16);
-<<<<<<< HEAD
         } else if (argb.length() == 6) {
-=======
-        }
-        else if (argb.length() == 6) {
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
             alpha = 255;
             red = Integer.parseInt(argb.substring(0, 2), 16);
             green = Integer.parseInt(argb.substring(2, 4), 16);
             blue = Integer.parseInt(argb.substring(4, 6), 16);
         }
-<<<<<<< HEAD
         return Color.argb(alpha, red, green, blue);
     }
-=======
-
-        return Color.argb(alpha, red, green, blue);
-    }
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
 }

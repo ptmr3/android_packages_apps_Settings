@@ -1,9 +1,6 @@
 /*
  * Copyright (C) 2010 Daniel Nilsson
-<<<<<<< HEAD
  * Copyright (C) 2013 The CyanogenMod Project
-=======
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,17 +29,8 @@ import android.widget.LinearLayout;
 
 import com.android.settings.R;
 
-<<<<<<< HEAD
 public class ColorPickerDialog extends Dialog
         implements ColorPickerView.OnColorChangedListener, View.OnClickListener {
-=======
-public class ColorPickerDialog
-        extends
-        Dialog
-        implements
-        ColorPickerView.OnColorChangedListener,
-        View.OnClickListener {
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
 
     private ColorPickerView mColorPicker;
 
@@ -61,15 +49,10 @@ public class ColorPickerDialog
 
     public ColorPickerDialog(Context context, int initialColor) {
         super(context);
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         init(initialColor);
     }
 
     private void init(int color) {
-<<<<<<< HEAD
         // Fight color branding
         getWindow().setFormat(PixelFormat.RGBA_8888);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -82,24 +65,6 @@ public class ColorPickerDialog
         View layout = inflater.inflate(R.layout.dialog_color_picker, null);
 
         setContentView(layout);
-=======
-        // To fight color branding.
-        getWindow().setFormat(PixelFormat.RGBA_8888);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setUp(color);
-
-    }
-
-    private void setUp(int color) {
-
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(
-                Context.LAYOUT_INFLATER_SERVICE);
-
-        View layout = inflater.inflate(R.layout.dialog_color_picker, null);
-
-        setContentView(layout);
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         setTitle(R.string.dialog_color_picker);
 
         mColorPicker = (ColorPickerView) layout.findViewById(R.id.color_picker_view);
@@ -110,15 +75,8 @@ public class ColorPickerDialog
         mIcsColor = (Button) layout.findViewById(R.id.ics_color);
 
         ((LinearLayout) mOldColor.getParent()).setPadding(
-<<<<<<< HEAD
                 Math.round(mColorPicker.getDrawingOffset()), 0,
                 Math.round(mColorPicker.getDrawingOffset()), 0
-=======
-                Math.round(mColorPicker.getDrawingOffset()),
-                0,
-                Math.round(mColorPicker.getDrawingOffset()),
-                0
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
                 );
 
         mOldColor.setOnClickListener(this);
@@ -136,60 +94,32 @@ public class ColorPickerDialog
                     int newColor = ColorPickerPreference.convertToColorInt(text);
                     mColorPicker.setColor(newColor, true);
                 } catch (Exception e) {
-<<<<<<< HEAD
                     // Do nothing here
                 }
             }
         });
 
         mIcsColor.setOnClickListener(new View.OnClickListener() {
-=======
-                }
-            }
-        });
-        mIcsColor.setOnClickListener(new View.OnClickListener() {
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
             @Override
             public void onClick(View v) {
                 try {
                     int newColor = 0xFF33B5E5;
                     mColorPicker.setColor(newColor, true);
                 } catch (Exception e) {
-<<<<<<< HEAD
                     // Do nothing here
                 }
             }
         });
-=======
-                }
-            }
-        });
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
     }
 
     @Override
     public void onColorChanged(int color) {
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
         mNewColor.setColor(color);
         try {
             mHex.setText(ColorPickerPreference.convertToARGB(color));
         } catch (Exception e) {
-<<<<<<< HEAD
             // Do nothing here
         }
-=======
-
-        }
-        /*
-         * if (mListener != null) { mListener.onColorChanged(color); }
-         */
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
     }
 
     public void setAlphaSliderVisible(boolean visible) {
@@ -198,10 +128,6 @@ public class ColorPickerDialog
 
     /**
      * Set a OnColorChangedListener to get notified when the color selected by the user has changed.
-<<<<<<< HEAD
-=======
-     * 
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
      * @param listener
      */
     public void setOnColorChangedListener(OnColorChangedListener listener) {
@@ -221,8 +147,4 @@ public class ColorPickerDialog
         }
         dismiss();
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> e3cbfd5... Settings: add battery bar (1/2)
 }
