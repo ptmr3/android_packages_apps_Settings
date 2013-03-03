@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 20013 Sons Of Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_DEVICE_CPU = "device_cpu";
     private static final String KEY_DEVICE_MEMORY = "device_memory";
 
-    static final int TAPS_TO_BE_A_DEVELOPER = 0;
+    static final int TAPS_TO_BE_A_DEVELOPER = 3;
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
