@@ -35,8 +35,8 @@ import com.android.settings.cyanogenmod.colorpicker.ColorPickerPreference;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
-    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_style";
-    private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
+	private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
+    private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock_style";
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
@@ -70,7 +70,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         PreferenceScreen prefSet = getPreferenceScreen();
 
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
-        mStatusBarStyle = (ListPreference) prefSet.findPreference(STATUS_BAR_CLOCK_STYLE);
+        mStatusBarClockStyle = (ListPreference) prefSet.findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) prefSet.findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
@@ -169,11 +169,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		if (preference == mStatusBarClockStyle) {
 			int statusBarClockStyle = Integer.valueOf((String) newValue);
-            int index = mStatusBarClockStyle.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_CLOCK_STYLE, statusBarClockStyle);
-            mStatusBarClockStyle.setSummary(mStatusBarClockStyle.getEntries()[index]);
-            return true;
+			int index = mStatusBarClockStyle.findIndexOfValue((String) newValue);
+			Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+					Settings.System.STATUS_BAR_CLOCK_STYLE, statusBarClockStyle);
+			mStatusBarClockStyle.setSummary(mStatusBarClockStyle.getEntries()[index]);
+			return true;
         } else if (preference == mStatusBarAmPm) { 
             int statusBarAmPm = Integer.valueOf((String) newValue);
             int index = mStatusBarAmPm.findIndexOfValue((String) newValue);
