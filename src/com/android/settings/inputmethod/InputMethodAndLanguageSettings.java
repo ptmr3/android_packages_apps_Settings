@@ -103,6 +103,19 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.language_settings);
 
+        mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
+        mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+
+        mKeyboardRotationToggle = (CheckBoxPreference) findPreference(KEYBOARD_ROTATION_TOGGLE);
+        mKeyboardRotationToggle.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.KEYBOARD_ROTATION_TIMEOUT, 0) > 0);
+
+        mKeyboardRotationTimeout = (ListPreference) findPreference(KEYBOARD_ROTATION_TIMEOUT);
+        mKeyboardRotationTimeout.setOnPreferenceChangeListener(this);
+        updateRotationTimeout(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.KEYBOARD_ROTATION_TIMEOUT, KEYBOARD_ROTATION_TIMEOUT_DEFAULT));
+
         try {
             mDefaultInputMethodSelectorVisibility = Integer.valueOf(
                     getString(R.string.input_method_selector_visibility_default_value));
@@ -213,10 +226,18 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
         // remove stylus preference for non stylus devices
         if (!hasStylus()) {
-            getPreferenceScreen().removePreference(
-                    findPreference(KEY_STYLUS_GESTURES));
+            PreferenceCategory pc = (PreferenceCategory) findPreference(KEY_STYLUS_GESTURES);
+            if (pc != null) {
+                getPreferenceScreen().removePreference(pc);
+            }
         }
+    }
 
+    public void updateRotationTimeout(int timeout) {
+        if (timeout == 0)
+            timeout = KEYBOARD_ROTATION_TIMEOUT_DEFAULT;
+        mKeyboardRotationTimeout.setValue(Integer.toString(timeout));
+        mKeyboardRotationTimeout.setSummary(getString(R.string.keyboard_rotation_timeout_summary, mKeyboardRotationTimeout.getEntry()));
     }
 
     private void updateInputMethodSelectorSummary(int value) {
