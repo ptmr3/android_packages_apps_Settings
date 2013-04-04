@@ -104,8 +104,8 @@ public class PieColor extends SettingsPreferenceFragment implements OnPreference
         mPieBg = (ColorPickerPreference) findPreference(PIE_BACKGROUND);
         mPieBg.setOnPreferenceChangeListener(this);
 
-        mBtnColor = (ColorPickerPreference) findPreference(PIE_BUTTON_COLOR);
-        mBtnColor.setOnPreferenceChangeListener(this);
+        mJuice = (ColorPickerPreference) findPreference(PIE_JUICE);
+        mJuice.setOnPreferenceChangeListener(this);
 
         mSelect = (ColorPickerPreference) findPreference(PIE_SELECT);
         mSelect.setOnPreferenceChangeListener(this);
@@ -124,9 +124,6 @@ public class PieColor extends SettingsPreferenceFragment implements OnPreference
 
         mChevronRight = (ColorPickerPreference) findPreference(PIE_CHEVRON_RIGHT);
         mChevronRight.setOnPreferenceChangeListener(this);
-
-        mJuice = (ColorPickerPreference) findPreference(PIE_JUICE);
-        mJuice.setOnPreferenceChangeListener(this);
 
         updateVisibility();
     }
