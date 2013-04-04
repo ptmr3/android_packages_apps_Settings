@@ -6,6 +6,8 @@ import java.io.InputStream;
 
 import android.util.Log;
 
+import com.android.settings.objects.EasyPair;
+
 public class CMDProcessor {
 
     private static final String TAG = "CMD Processor";
