@@ -194,10 +194,6 @@ public class ColorPickerPreference extends Preference implements
 
     /**
      * Toggle Alpha Slider visibility (by default it's disabled)
-<<<<<<< HEAD:src/com/android/settings/cyanogenmod/colorpicker/ColorPickerPreference.java
-=======
-     *
->>>>>>> 8f5f0a1... Add Pie Settings:src/net/margaritov/preference/colorpicker/ColorPickerPreference.java
      * @param enable
      */
     public void setAlphaSliderEnabled(boolean enable) {
@@ -235,10 +231,6 @@ public class ColorPickerPreference extends Preference implements
 
     /**
      * For custom purposes. Not used by ColorPickerPreferrence
-<<<<<<< HEAD:src/com/android/settings/cyanogenmod/colorpicker/ColorPickerPreference.java
-=======
-     *
->>>>>>> 8f5f0a1... Add Pie Settings:src/net/margaritov/preference/colorpicker/ColorPickerPreference.java
      * @param argb
      * @throws NumberFormatException
      * @author Unknown
