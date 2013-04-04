@@ -46,7 +46,6 @@ public class Pie extends SettingsPreferenceFragment
     private static final String PIE_SIZE = "pie_size";
     private static final String PIE_TRIGGER = "pie_trigger";
     private static final String PIE_GAP = "pie_gap";
-    private static final String PIE_CENTER = "pie_center";
     private static final String PIE_NOTIFICATIONS = "pie_notifications";
     private static final String PIE_LASTAPP = "pie_lastapp";
     private static final String PIE_MENU = "pie_menu";
@@ -57,7 +56,6 @@ public class Pie extends SettingsPreferenceFragment
     private ListPreference mPieGravity;
     private ListPreference mPieTrigger;
     private ListPreference mPieGap;
-    private CheckBoxPreference mPieCenter;
     private CheckBoxPreference mPieNotifi;
     private CheckBoxPreference mPieControls;
     private CheckBoxPreference mPieLastApp;
@@ -107,10 +105,6 @@ public class Pie extends SettingsPreferenceFragment
 
         mPieSize.setOnPreferenceChangeListener(this);
         mPieTrigger.setOnPreferenceChangeListener(this);
-
-        mPieCenter = (CheckBoxPreference) prefSet.findPreference(PIE_CENTER);
-        mPieCenter.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_CENTER, 1) == 1);
 
         mPieGap = (ListPreference) prefSet.findPreference(PIE_GAP);
         int pieGap = Settings.System.getInt(mContext.getContentResolver(),
@@ -166,9 +160,6 @@ public class Pie extends SettingsPreferenceFragment
         } else if (preference == mPieSearch) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_SEARCH, mPieSearch.isChecked() ? 1 : 0);
-        } else if (preference == mPieCenter) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.PIE_CENTER, mPieCenter.isChecked() ? 1 : 0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
