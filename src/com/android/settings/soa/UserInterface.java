@@ -42,24 +42,28 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.View;
 
-import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-import com.android.settings.util.CMDProcessor;
+import com.android.settings.Utils;
 import com.android.settings.util.Helpers;
+import com.android.settings.util.CMDProcessor;
+import com.android.settings.SettingsPreferenceFragment;
 
-public class UserInterface extends SettingsPreferenceFragment {
+public class UserInterface extends SettingsPreferenceFragment 
+			implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "UserInterface";
+	private static final String KEY_DUAL_PANE = "dual_pane";
 
     Preference mLcdDensity;
+	CheckBoxPreference mDualPane;
 
     int newDensityValue;
-
-    DensityChanger densityFragment;
+	DensityChanger densityFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.user_interface_settings);
 
@@ -74,8 +78,17 @@ public class UserInterface extends SettingsPreferenceFragment {
         }
 
         mLcdDensity.setSummary(getResources().getString(R.string.current_lcd_density) + currentProperty);
-    }
 
+		mDualPane = (CheckBoxPreference) findPreference(KEY_DUAL_PANE);
+        boolean preferDualPane = getResources().getBoolean(
+                com.android.internal.R.bool.preferences_prefer_dual_pane);
+        boolean dualPaneMode = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.DUAL_PANE_PREFS, (preferDualPane ? 1 : 0)) == 1;
+        mDualPane.setChecked(dualPaneMode);
+
+		setHasOptionsMenu(true);
+
+    }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -84,7 +97,19 @@ public class UserInterface extends SettingsPreferenceFragment {
             ((PreferenceActivity) getActivity())
             .startPreferenceFragment(new DensityChanger(), true);
             return true;
+		} else if (preference == mDualPane) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DUAL_PANE_PREFS,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+ 
+	@Override
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        final String key = preference.getKey();
+        return false;
+    }
+
 }

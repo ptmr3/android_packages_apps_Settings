@@ -31,6 +31,17 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </PreferenceScreen>
 
+ 		<PreferenceScreen android:icon="@drawable/dd" android:title="@string/dev_team" android:key="dev_team">
+        <Preference android:title="@string/dev1" android:key="dev1" android:summary="@string/ptmr3" />
+        <Preference android:title="@string/dev2" android:key="dev2" android:summary="@string/evil1art" />
+        <Preference android:title="@string/dev3" android:key="dev3" android:summary="@string/djintrigue808" />
+        <Preference android:title="@string/dev4" android:key="dev4" android:summary="@string/Lantek23" />
+        <Preference android:title="@string/dev5" android:key="dev5" android:summary="@string/akapaul26" />
+        <Preference android:title="@string/dev6" android:key="dev6" android:summary="@string/sbreen94" />
+        <Preference android:title="@string/dev7" android:key="dev7" android:summary="@string/AddisG" />
+        <Preference android:title="@string/dev8" android:key="dev8" android:summary="@string/apen83" />
+    	</PreferenceScreen>
+
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
                 android:title="@string/device_status" 
